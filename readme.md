@@ -15,6 +15,7 @@ A simple guessing game made with vanilla JavaScript.
 - [ ] Change preferences
 - [ ] Light and Dark Mode
 - [ ] Potential multiplayer
+- [ ] Limit The Guessing Time
 
 ____
 

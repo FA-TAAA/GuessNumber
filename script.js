@@ -1,76 +1,61 @@
 "use strict";
 
-const MAX_NUMBER_RANGE = 100;
+const TYPING_INTERVAL = 1000; // in ms
+const minimumRange = 20;
+const maximumRange = 100;
 
+const playerInput = document.querySelector("#number-input");
+const indicator = document.querySelector(".indicator");
+
+let typingTimer;
+let parsedUserInput;
 let numberToGuess = generateNewRandomNumber();
-const guessIndicator = document.querySelector("#indicator");
-const guessButton = document.querySelector("#guess");
-const userInput = document.querySelector("#numberToGuess");
-const replayButton = document.querySelector("#replay");
 
 function generateNewRandomNumber() {
-  let n = Math.floor(Math.random() * MAX_NUMBER_RANGE) + 1;
-  console.log(`Number to Guess : ${n}`);
-  return n;
+  console.log(numberToGuess);
+  return Math.trunc(
+    Math.random() * (maximumRange - minimumRange) + minimumRange,
+  );
 }
 
-function validateInput(n) {
-  if (isNaN(n)) {
-    guessIndicator.textContent =
-      "ERROR ! You're Input Should Only Contain Numbers !";
+playerInput.addEventListener("input", () => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(() => {
+    parsedUserInput = playerInput.value.trim();
+    //
+    if (isInputValid(parsedUserInput)) {
+      isGuessCorrect(parsedUserInput);
+    }
+  }, TYPING_INTERVAL);
+});
+
+playerInput.addEventListener("keydown", () => {
+  clearTimeout(typingTimer);
+});
+
+function isInputValid(n) {
+  if (n == "") {
+    indicator.textContent = "";
     return false;
-  } else if (n <= 0) {
-    guessIndicator.textContent =
-      "ERROR ! Your Number is Bellow The Minimum Range ( 1 )";
+  } else if (isNaN(n)) {
+    indicator.textContent = "Your input should only contain numbers !";
     return false;
-  } else if (n > MAX_NUMBER_RANGE) {
-    guessIndicator.textContent = `ERROR ! Your Number is Above The Minimum Range ( ${MAX_NUMBER_RANGE} )`;
+  } else if (n < minimumRange || n > maximumRange) {
+    indicator.textContent = "You've exceeded the range !";
     return false;
   }
   return true;
 }
 
-function isCorrectGuess(n) {
-  if (n === numberToGuess) {
-    guessIndicator.textContent = "You Won ! Click on Replay to Play Again.";
+function isGuessCorrect(n) {
+  if (n > numberToGuess) {
+    indicator.textContent = "Too Big";
+    return false;
+  } else if (n < numberToGuess) {
+    indicator.textContent = "Too Small";
+    return false;
+  } else if (n == numberToGuess) {
+    indicator.textContent = "Correct !";
     return true;
-  } else if (n > numberToGuess) {
-    guessIndicator.textContent = "Your guess is too big";
-  } else {
-    guessIndicator.textContent = "Your guess is too small";
-  }
-  return false;
-}
-
-function updateReplayUI(replay) {
-  if (replay) {
-    userInput.disabled = true;
-    replayButton.classList.remove("hidden");
-    guessButton.classList.add("hidden");
-  } else {
-    userInput.disabled = false;
-    userInput.value = "";
-    guessIndicator.textContent = "";
-    replayButton.classList.add("hidden");
-    guessButton.classList.remove("hidden");
   }
 }
-
-guessButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const parsedUserInput = parseInt(userInput.value);
-
-  if (!validateInput(parsedUserInput)) {
-    return;
-  }
-
-  if (isCorrectGuess(parsedUserInput)) {
-    updateReplayUI(true);
-  }
-});
-
-replayButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  numberToGuess = generateNewRandomNumber();
-  updateReplayUI(false);
-});

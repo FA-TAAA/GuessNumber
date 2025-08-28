@@ -4,30 +4,30 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="stylesheet" href="node_modules/reset-css/reset.css" />
+        <link rel="stylesheet" href="style.css" />
     </head>
-
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            font-family: sans-serif;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
     <body>
-        <h3>Guess The Number between 1 and 100 !</h3>
-        <form>
-            <label for="numberToGuess">Type Your Number</label>
-            <input type="number" id="numberToGuess" />
-            <button id="guess">Guess !</button>
-            <button class="hidden" id="replay"">Replay</button>
-        </form>
-        <h3 id="indicator"></h3>
+        <header>
+            <nav>
+                <ul class="top-nav-bar">
+                    <li class="spacer"></li>
+                    <li>Guess The Number Game</li>
+                    <li>DM</li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="game-card">
+                <label for="number-input">Type Your Guess !</label>
+                <form>
+                    <input type="text" name="number-input" id="number-input" />
+                </form>
+                <!-- Add indicator Animation -->
+                <p class="indicator"></p>
+                <p class="tries-counter">Tries remaining : 0</p>
+            </section>
+        </main>
         <script src="script.js"></script>
     </body>
 </html>
