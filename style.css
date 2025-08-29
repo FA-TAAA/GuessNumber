@@ -32,7 +32,7 @@ nav {
     flex: 0.5;
 }
 
-.game-card {
+.card {
     width: 13rem;
     height: 15rem;
     border-radius: 4px;
@@ -41,6 +41,48 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
     border: 3px solid black;
+}
+
+.hidden {
+    display: none;
+}
+
+.start-menu {
+    text-align: left;
+}
+
+.input-box {
+    text-align: left;
+}
+
+.input-box input {
+    width: 2rem;
+}
+
+@keyframes indicatorWrongAnimation {
+    0% {
+        color: red;
+    }
+
+    100% {
+        color: black;
+    }
+}
+
+@keyframes indicatorWinAnimation {
+    0% {
+        color: seagreen;
+    }
+
+    100% {
+        color: black;
+    }
+}
+.wrong-animation {
+    animation: indicatorWrongAnimation 1s ease-in-out;
+}
+
+.win-animation {
+    animation: indicatorWinAnimation 1s ease-in-out;
 }

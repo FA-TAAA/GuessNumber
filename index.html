@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Number Guessing Game</title>
         <link rel="stylesheet" href="node_modules/reset-css/reset.css" />
         <link rel="stylesheet" href="style.css" />
     </head>
@@ -18,16 +18,61 @@
             </nav>
         </header>
         <main>
-            <section class="game-card">
+            <section class="card start-menu">
+                <form>
+                    <div class="input-box">
+                        <label for="minimum-range">Min. Range</label>
+                        <input
+                            type="text"
+                            name="minimum-range"
+                            id="minimum-range"
+                            placeholder="..."
+                            value=""
+                            required
+                        />
+                    </div>
+                    <div class="input-box">
+                        <label for="maximum-range">Max. Range</label>
+                        <input
+                            type="text"
+                            name="maximum-range"
+                            id="maximum-range"
+                            placeholder="..."
+                            required
+                        />
+                    </div>
+                    <div class="input-box">
+                        <label for="number-tries">Number Of Tries</label>
+                        <input
+                            type="text"
+                            name="number-tries"
+                            id="number-tries"
+                        />
+                    </div>
+                </form>
+                <p class="indicator"></p>
+                <button class="play-button">Play !</button>
+            </section>
+            <section class="card in-game hidden">
                 <label for="number-input">Type Your Guess !</label>
                 <form>
-                    <input type="text" name="number-input" id="number-input" />
+                    <input
+                        type="text"
+                        name="number-input"
+                        id="number-input"
+                        placeholder="Type here..."
+                    />
                 </form>
                 <!-- Add indicator Animation -->
                 <p class="indicator"></p>
                 <p class="tries-counter">Tries remaining : 0</p>
+                <div class="end-game-buttons hidden">
+                    <button class="pref-button">Change Preferences</button>
+                    <button class="replay-button">Replay !</button>
+                </div>
             </section>
         </main>
-        <script src="script.js"></script>
+        <script src="scripts/start-menu.js"></script>
+        <script src="scripts/in-game.js"></script>
     </body>
 </html>

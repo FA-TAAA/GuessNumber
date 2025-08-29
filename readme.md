@@ -8,14 +8,14 @@ A simple guessing game made with vanilla JavaScript.
 - [x] Show the user if their guess is correct, bigger or smaller than the number to guess (v1.0)
 - [x] Give the user a chance to replay by clicking the "Replay" button (v1.0)
 - [ ] Achieve a good looking, responsive and interactive UI
-- [ ] Remove the "Guess" button and replace with a dynamic checking when the user stops typing
-- [ ] Make the user choose a preferred range
-- [ ] Give the user the possibility to choose a maximum number of tries
-- [ ] Add a start Menu to choose the different parameters
-- [ ] Change preferences
+- [x] Remove the "Guess" button and replace with a dynamic checking when the user stops typing (v2.0)
+- [x] Make the user choose a preferred range (v2.1)
+- [x] Give the user the possibility to choose a maximum number of tries (v2.1)
+- [x] Add a start Menu to choose the different parameters (v2.1)
 - [ ] Light and Dark Mode
 - [ ] Potential multiplayer
 - [ ] Limit The Guessing Time
+- [ ] Organize the codebase in more structured manner
 
 ____
 
