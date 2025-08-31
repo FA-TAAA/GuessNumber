@@ -20,7 +20,7 @@ document.querySelector(".play-button").addEventListener("click", () => {
 
   setGameParameters(minRange, maxRange, inputTries);
   updateTriesCounter(inputTries);
-  generateNumberToGuess();
+  generateNumberToGuess(minRange, maxRange);
 
   playerInput.disabled = false;
   playerInput.value = "";

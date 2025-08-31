@@ -89,6 +89,7 @@ nav {
         color: black;
     }
 }
+
 .wrong-animation {
     animation: indicatorWrongAnimation 1s ease-in-out;
 }

@@ -6,7 +6,7 @@ const playerInput = document.querySelector("#number-input");
 const endGameButtons = document.querySelector(".end-game-buttons");
 const prefButton = document.querySelector(".pref-button");
 const replayButton = document.querySelector(".replay-button");
-const indicator = document.querySelectorAll(".indicator");
+const indicators = document.querySelectorAll(".indicator");
 const triesCounter = document.querySelector(".tries-counter");
 
 playerInput.addEventListener("input", () => {
@@ -54,6 +54,7 @@ playerInput.addEventListener("keydown", () => {
 replayButton.addEventListener("click", () => {
   UIreset("inGame");
 });
+
 prefButton.addEventListener("click", () => {
   UIreset("startMenu");
 });
@@ -79,7 +80,7 @@ function toggleVisibility(element, isVisible) {
   element.classList.toggle("hidden", !isVisible);
 }
 
-function UIreset(target) {
+function resetUI(target) {
   playerInput.disabled = false;
   playerInput.value = "";
   inGameTriesCounter = inputTries;

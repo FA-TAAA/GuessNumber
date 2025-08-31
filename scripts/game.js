@@ -11,10 +11,9 @@ function setGameParameters(minRange, maxRange, tries) {
   inGameTriesCounter = tries;
 }
 
-function generateNumberToGuess() {
+function generateNumberToGuess(minRange, maxRange) {
   numberToGuess =
-    Math.trunc(Math.random() * (maximumRange - minimumRange) + minimumRange) +
-    1;
+    Math.floor(Math.random() * (maxRange - minRange) + minRange) + 1;
 }
 
 function checkGuess(userGuess) {
