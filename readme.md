@@ -16,6 +16,7 @@ A simple guessing game made with vanilla JavaScript.
 - [ ] Potential multiplayer
 - [ ] Limit The Guessing Time
 - [ ] Organize the codebase in more structured manner
+- [ ] Add Player Stats in LocalStorage
 
 ____
 

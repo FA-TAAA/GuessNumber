@@ -62,7 +62,7 @@ nav {
 
 @keyframes indicatorWrongAnimation {
     0% {
-        color: red;
+        color: orange;
     }
 
     100% {
@@ -79,8 +79,22 @@ nav {
         color: black;
     }
 }
+
+@keyframes indicatorErrorAnimation {
+    0% {
+        color: red;
+    }
+
+    100% {
+        color: black;
+    }
+}
 .wrong-animation {
     animation: indicatorWrongAnimation 1s ease-in-out;
+}
+
+.error-animation {
+    animation: indicatorErrorAnimation 1s ease-in-out;
 }
 
 .win-animation {
