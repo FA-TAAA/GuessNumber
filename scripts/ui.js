@@ -52,21 +52,21 @@ playerInput.addEventListener("keydown", () => {
 });
 
 replayButton.addEventListener("click", () => {
-  UIreset("inGame");
+  resetUI("inGame");
 });
 
 prefButton.addEventListener("click", () => {
-  UIreset("startMenu");
+  resetUI("startMenu");
 });
 
 function updateIndicator(message, target, animation) {
   const index = target === "inGame" ? "1" : "0";
-  indicator[index].textContent = message;
-  indicator[index].classList.add(`${animation}-animation`, true);
-  indicator[index].addEventListener(
+  indicators[index].textContent = message;
+  indicators[index].classList.add(`${animation}-animation`, true);
+  indicators[index].addEventListener(
     "animationend",
     () => {
-      indicator[index].classList.remove(`${animation}-animation`, true);
+      indicators[index].classList.remove(`${animation}-animation`, true);
     },
     { once: true },
   );
@@ -84,10 +84,10 @@ function resetUI(target) {
   playerInput.disabled = false;
   playerInput.value = "";
   inGameTriesCounter = inputTries;
-  generateNumberToGuess();
+  generateNumberToGuess(minimumRange, maximumRange);
   if (target == "inGame") {
     toggleVisibility(endGameButtons, false);
-    updateIndicator("", "inGame");
+    updateIndicator("", "inGame", "wrong");
     updateTriesCounter(inputTries);
   } else if ("startMenu") {
     toggleVisibility(inGame, false);

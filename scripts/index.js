@@ -28,6 +28,6 @@ document.querySelector(".play-button").addEventListener("click", () => {
   toggleVisibility(inGame, true);
   toggleVisibility(endGameButtons, false);
 
-  updateIndicator("", "startMenu");
-  updateIndicator("", "inGame");
+  updateIndicator("", "startMenu", "wrong");
+  updateIndicator("", "inGame", "wrong");
 });
