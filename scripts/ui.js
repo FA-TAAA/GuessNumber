@@ -14,6 +14,7 @@ playerInput.addEventListener("input", () => {
   typingTimer = setTimeout(() => {
     let userInput = playerInput.value;
     if (isValueEmpty(userInput)) {
+      updateIndicator("inGame", "");
       return;
     }
 
@@ -22,26 +23,28 @@ playerInput.addEventListener("input", () => {
     const validation = isInputValid(userInput, minimumRange, maximumRange);
 
     if (!validation.valid) {
-      updateIndicator(validation.message, "inGame", "error");
+      updateIndicator("inGame", validation.message, "error");
       return;
     }
 
     const guess = checkGuess(userInput);
-
     switch (guess) {
       case "Correct !":
         playerInput.disabled = true;
-        updateIndicator(guess, "inGame", "win");
+        updateIndicator("inGame", guess, "win");
         toggleVisibility(endGameButtons, true);
         break;
-
       case "Too Big !":
-        updateIndicator(guess, "inGame", "wrong");
+        updateIndicator("inGame", guess, "wrong");
         break;
 
       case "Too Small !":
-        updateIndicator(guess, "inGame", "wrong");
+        updateIndicator("inGame", guess, "wrong");
         break;
+      case "No More Tries !":
+        playerInput.disabled = true;
+        updateIndicator("inGame", "Your Tries Have Finished...", "error");
+        toggleVisibility(endGameButtons, true);
     }
     updateTriesCounter(inGameTriesCounter);
   }, TYPING_INTERVAL);
@@ -59,8 +62,8 @@ prefButton.addEventListener("click", () => {
   resetUI("startMenu");
 });
 
-function updateIndicator(message, target, animation) {
-  const index = target === "inGame" ? "1" : "0";
+function updateIndicator(target = "inGame", message = "", animation = "wrong") {
+  const index = target == "inGame" ? 1 : 0;
   indicators[index].textContent = message;
   indicators[index].classList.add(`${animation}-animation`, true);
   indicators[index].addEventListener(
@@ -87,10 +90,10 @@ function resetUI(target) {
   generateNumberToGuess(minimumRange, maximumRange);
   if (target == "inGame") {
     toggleVisibility(endGameButtons, false);
-    updateIndicator("", "inGame", "wrong");
+    updateIndicator("inGame", "", "wrong");
     updateTriesCounter(inputTries);
   } else if ("startMenu") {
-    toggleVisibility(inGame, false);
-    toggleVisibility(startMenu, true);
+    toggleVisibility(inGameUI, false);
+    toggleVisibility(startMenuUI, true);
   }
 }

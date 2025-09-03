@@ -44,12 +44,28 @@ nav {
     border: 3px solid black;
 }
 
-.hidden {
-    display: none;
+.start-menu-ui {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+    justify-content: space-evenly;
 }
 
-.start-menu {
-    text-align: left;
+.in-game-ui {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.in-game-ui .indicator {
+    height: 0.5rem;
+}
+
+.hidden {
+    display: none;
 }
 
 .input-box {
@@ -58,6 +74,10 @@ nav {
 
 .input-box input {
     width: 2rem;
+}
+
+.indicator {
+    font-size: 0.8rem;
 }
 
 @keyframes indicatorWrongAnimation {

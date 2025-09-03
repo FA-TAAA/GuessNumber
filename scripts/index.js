@@ -1,7 +1,7 @@
 "use strict";
 
-const startMenu = document.querySelector(".start-menu");
-const inGame = document.querySelector(".in-game");
+const startMenuUI = document.querySelector(".start-menu-ui");
+const inGameUI = document.querySelector(".in-game-ui");
 
 let minRange;
 let maxRange;
@@ -14,7 +14,8 @@ document.querySelector(".play-button").addEventListener("click", () => {
 
   const validation = isValidGameParameters(minRange, maxRange, inputTries);
   if (!validation.valid) {
-    updateIndicator(validation.message, "startMenu", "error");
+    console.log(validation.message);
+    updateIndicator("startMenu", validation.message, "error");
     return;
   }
 
@@ -24,10 +25,10 @@ document.querySelector(".play-button").addEventListener("click", () => {
 
   playerInput.disabled = false;
   playerInput.value = "";
-  toggleVisibility(startMenu, false);
-  toggleVisibility(inGame, true);
+  toggleVisibility(startMenuUI, false);
+  toggleVisibility(inGameUI, true);
   toggleVisibility(endGameButtons, false);
 
-  updateIndicator("", "startMenu", "wrong");
-  updateIndicator("", "inGame", "wrong");
+  updateIndicator("inGame", "", "wrong");
+  updateIndicator("startMenu", "", "wrong");
 });

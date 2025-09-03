@@ -18,6 +18,9 @@ function generateNumberToGuess(minRange, maxRange) {
 
 function checkGuess(userGuess) {
   inGameTriesCounter--;
+  if (inGameTriesCounter <= 0) {
+    return "No More Tries !";
+  }
   if (userGuess == numberToGuess) {
     return "Correct !";
   } else if (userGuess > numberToGuess) {

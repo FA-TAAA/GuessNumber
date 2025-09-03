@@ -1,7 +1,10 @@
 "use strict";
 function isInputValid(input, min, max) {
   if (isNaN(input)) {
-    return { valid: false, message: "Letters and symbols are not allowed !" };
+    return {
+      valid: false,
+      message: "You shouldn't start with symbols nor letters !",
+    };
   } else if (input > max) {
     return { valid: false, message: "The Guess Is Bigger Than The Max. Range" };
   } else if (input < min) {
@@ -18,6 +21,13 @@ function isValueEmpty(input) {
 }
 
 function isValidGameParameters(minRange, maxRange, tries) {
+  if (isNaN(minRange) || isNaN(maxRange) || isNaN(tries)) {
+    return {
+      valid: false,
+      message: "You shouldn't start with symbols nor letters !",
+    };
+  }
+
   if (minRange >= maxRange) {
     return {
       valid: false,
